@@ -29,41 +29,41 @@
 #ifndef MATRIXABSTRACTLAYER_JRLMATH_MATRIX4X4_H
 # define MATRIXABSTRACTLAYER_JRLMATH_MATRIX4X4_H
 
-# include "jrl/mathtools/matrix4x4.hh"
+# include <Eigen/Core>
 
-typedef struct jrlMathTools::Matrix4x4 < double > matrix4d;
+typedef Eigen::Matrix<double, 4, 4 > matrix4d;
 
 # define MAL_S4x4_MATRIX_TYPE(type) \
-  jrlMathTools::Matrix4x4<type>
+  Eigen::Matrix<type, 4, 4 >
 
 # define MAL_S4x4_MATRIX(name,type) \
-  jrlMathTools::Matrix4x4<type> name
+  Eigen::Matrix<type, 4, 4 > name
 
 # define MAL_S4x4_MATRIX_CLEAR(name) \
-  name.setZero()
+  (name).setZero()
 
 # define MAL_S4x4_MATRIX_SET_IDENTITY(name) \
-  name.setIdentity()
+  (name).setIdentity()
 
 # define MAL_S4x4_INVERSE(name,inv_matrix,type)	\
-  inv_matrix = name.Inversion();
+  (inv_matrix) = (name).inverse();
 
 # define MAL_S4x4_RET_TRANSPOSE(matrix) \
-  matrix.Transpose();
+  (matrix).transpose();
 
 # define MAL_S4x4_TRANSPOSE_A_in_At(A,At)	\
-  A.Transpose(At);
+  (At) = (A).transpose();
 
 # define MAL_S4x4_RET_A_by_B(A,B) \
-  A*B
+  (A)*(B)
 
 # define MAL_S4x4_C_eq_A_by_B(C,A,B) \
   (C)=(A)*(B)
 
 # define MAL_S4x4_MATRIX_ACCESS_I(name, i) \
-  name[i]
+  "Do not use this macro"
 
 # define MAL_S4x4_MATRIX_ACCESS_I_J(name, i, j) \
-  name(i,j)
+  (name) (i,j)
 
 #endif /* MATRIXABSTRACTLAYER_JRLMATH_MATRIX4X4 */

@@ -17,6 +17,7 @@
  * Test Matrix macros
  */
 
+#include <iostream>
 #include "assertion.hh"
 #include "malv1utils.hh"
 

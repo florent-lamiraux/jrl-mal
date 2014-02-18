@@ -30,38 +30,34 @@
 #ifndef MATRIXABSTRACTLAYER_JRLMATH_VECTOR3_H
 # define MATRIXABSTRACTLAYER_JRLMATH_VECTOR3_H
 # include <cmath>
-# include <jrl/mathtools/vector3.hh>
+# include <Eigen/Core>
 
-typedef jrlMathTools::Vector3D<double> vector3d;
+typedef Eigen::Matrix<double, 3, 1> vector3d;
 
 # define MAL_S3_VECTOR(name,type)		\
-  jrlMathTools::Vector3D<type> name
+  Eigen::Matrix<type, 3, 1> name
 
-# define MAL_S3_VECTOR_TYPE(type) jrlMathTools::Vector3D<type>
+# define MAL_S3_VECTOR_TYPE(type) Eigen::Matrix<type, 3, 1>
 
 # define MAL_S3_VECTOR_SIZE(name)		\
   3
 
 # define MAL_S3_VECTOR_FILL(name,value)		\
-  { name.m_x = value;				\
-    name.m_y = value;				\
-    name.m_z = value; }
+  (name).setConstant (value)
 
 # define MAL_S3_VECTOR_CLEAR(name)		\
-{ name.m_x = 0.0;				\
-	name.m_y = 0.0;				\
-	name.m_z = 0.0; }
+  (name).setZero ()
 
 # define MAL_S3_VECTOR_NORM(name)		\
   name.norm()
 
 # define MAL_S3_VECTOR_CROSS_PRODUCT(res,v1,v2)	\
-  res = v1 ^ v2;
+  (res) = (v1).cross (v2);
 
 # define MAL_S3_RET_VECTOR_DATABLOCK(name)	\
-  &name
+  "Do not use this macros"
 
 # define MAL_S3_VECTOR_ACCESS(name, i)  	\
-  name[i]
+  (name)[i]
 
 #endif /* MATRIXABSTRACTLAYER_JRLMATH_VECTOR3_H*/

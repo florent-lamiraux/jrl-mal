@@ -33,32 +33,29 @@
 #ifndef MATRIXABSTRACTLAYER_JRLMATH_VECTOR4_H
 # define MATRIXABSTRACTLAYER_JRLMATH_VECTOR4_H
 
-# include "jrl/mathtools/vector4.hh"
+# include <Eigen/Core>
 
-typedef jrlMathTools::Vector4D<double> vector4d;
+typedef Eigen::Matrix<double, 4, 1> vector4d;
 
 #define MAL_S4_VECTOR(name,type)		\
-  jrlMathTools::Vector4D<type> name
+  Eigen::Matrix<type, 4, 1> name
 
 #define MAL_S4_VECTOR_TYPE(name)		\
-  jrlMathTools::Vector4D<type>
+  Eigen::Matrix<type, 4, 1>
 
 #define MAL_S4_VECTOR_SIZE(name)		\
   4
 
 #define MAL_S4_VECTOR_FILL(name,value)		\
-  { name.m_x = value;				\
-    name.m_y = value;				\
-    name.m_z = value;                           \
-    name.m_w = value; }
+  (name).setConstant (value)
 
 #define MAL_S4_VECTOR_NORM(name)		\
-  name.norm()
+  (name).norm()
 
 #define MAL_S4_RET_VECTOR_DATABLOCK(name)	\
-  &name
+  "Do not use this macros"
 
 #define MAL_S4_VECTOR_ACCESS(name, i)  		\
-  name[i]
+  (name) [i]
 
 # endif /* MATRIXABSTRACTLAYER_JRLMATH_VECTOR3_H */
