@@ -83,19 +83,19 @@ typedef Eigen::Matrix<double, Eigen::Dynamic, 1> vectorN;
 #define MAL_RET_VECTOR_DATABLOCK(name)               \
   VRAWDATA(name)
 
-typedef Eigen::Matrix<double, Eigen::Dynamic, Eigen::Dynamic, Eigen::RowMajor> matrixNxP;
+typedef Eigen::Matrix<double, Eigen::Dynamic, Eigen::Dynamic> matrixNxP;
 
 #define MAL_MATRIX_TYPE(type)                        \
-  Eigen::Matrix<type, Eigen::Dynamic, Eigen::Dynamic, Eigen::RowMajor>
+  Eigen::Matrix<type, Eigen::Dynamic, Eigen::Dynamic>
 
 #define MAL_MATRIX(name, type)                       \
-  Eigen::Matrix<type, Eigen::Dynamic, Eigen::Dynamic, Eigen::RowMajor> name
+  Eigen::Matrix<type, Eigen::Dynamic, Eigen::Dynamic> name
 
 #define MAL_MATRIX_(type)                            \
-  Eigen::Matrix<type, Eigen::Dynamic, Eigen::Dynamic, Eigen::RowMajor>
+  Eigen::Matrix<type, Eigen::Dynamic, Eigen::Dynamic>
 
 #define MAL_MATRIX_DIM(name, type, nb_rows, nb_cols) \
-  Eigen::Matrix<type, Eigen::Dynamic, Eigen::Dynamic, Eigen::RowMajor> name(nb_rows,nb_cols)
+  Eigen::Matrix<type, Eigen::Dynamic, Eigen::Dynamic> name(nb_rows,nb_cols)
 
 #define MAL_MATRIX_RESIZE(name,nb_rows,nb_cols)      \
   name.conservativeResize(nb_rows,nb_cols)
@@ -156,7 +156,7 @@ typedef Eigen::Matrix<double, Eigen::Dynamic, Eigen::Dynamic, Eigen::RowMajor> m
 #define MAL_MATRIX_C_eq_EXTRACT_A(C,A,type, top,left, nbrows, nbcols) \
   C.noalias() = A.block(top,left,nbrows,nbcols)
 
-template<class type> inline double __ret_mal_matrix_ret_determinant(Eigen::Matrix<type, Eigen::Dynamic, Eigen::Dynamic, Eigen::RowMajor> const & m)
+template<class type> inline double __ret_mal_matrix_ret_determinant(Eigen::Matrix<type, Eigen::Dynamic, Eigen::Dynamic> const & m)
 {
   return (m.rows()==m.cols())?m.determinant():-1;
 }
